@@ -1,15 +1,13 @@
-import React from "react";
-import Header from './components/Header/Header'
-import PokemonsList from './Pages/PokemonsListPage/PokemonsListPage'
+import Router from "./routes/Router";
+import GlobalState from "./contexts/GlobalState";
+import { GlobalStyle } from "./GlobalStyles.styled";
 
+export default function App() {
 
-function App() {
   return (
-    <div>
-     <Header/>
-     <PokemonsList/>
-    </div>
+    <GlobalState>
+      <GlobalStyle/>
+      <Router />
+    </GlobalState>
   );
 }
-
-export default App;
