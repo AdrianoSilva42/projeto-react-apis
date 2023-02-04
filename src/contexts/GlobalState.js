@@ -2,6 +2,7 @@ import axios from "axios";
 import { useEffect, useState } from "react";
 import { BASE_URL } from "../constants/url";
 import { ContextoGlobal } from "../contexts/GlobalContext";
+import Card from "../components/Card/Card"
 
 
 export default function GlobalState(props){
@@ -40,7 +41,10 @@ export default function GlobalState(props){
       );
 
       setPokedex(newPokedex);
+      
     };
+
+   //======================================================================================//
 
     // não mostrar pokemons que estão na pokedex
       const filteredPokelist = () =>
@@ -51,6 +55,20 @@ export default function GlobalState(props){
       )
      );
 
+    //Essa função vai renderizar os pokemons na tela inicial, e vai mandar por props ao componente Card as informações: key, pokemonUrl e addToPokedex
+     const PokelistFiltrada = filteredPokelist().map((pokemon) => (
+      <Card
+        key={pokemon.url}
+        pokemonUrl={pokemon.url}
+        addToPokedex={addToPokedex}          
+      />
+      
+    ))
+    
+  
+
+   //======================================================================================//
+
         
 
       const context = {
@@ -58,7 +76,9 @@ export default function GlobalState(props){
         pokedex:pokedex,
         addToPokedex:addToPokedex,
         removeFromPokedex:removeFromPokedex,
-        filteredPokelist:filteredPokelist
+        filteredPokelist:filteredPokelist,
+        PokelistFiltrada:PokelistFiltrada,
+        
       }
 
     return(

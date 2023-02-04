@@ -77,6 +77,7 @@ export const Button2 = styled.button`
   border: none;
 
   color: #1A1A1A;
+
 `;
 
 export const RemoveButton = styled.button`
@@ -108,4 +109,11 @@ export const RemoveButton = styled.button`
       flex: none;
       order: 1;
       flex-grow: 0;
+
+      :active{
+        background-color: white; /* Cor de fundo ao pressionar */
+        color: #FF6262;
+        box-shadow: 0 5px #666; /* Sombra */
+        transform: translateY(4px)
+      }
 `;

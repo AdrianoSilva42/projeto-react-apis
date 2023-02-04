@@ -5,12 +5,12 @@ import img from "../../img/logoPokemon.png"
 import { useContext } from "react";
 import { ContextoGlobal } from "../../contexts/GlobalContext";
 
-function Header() {
+function Header({detalhes}) {
 
 
   const contexto = useContext(ContextoGlobal)
 
-  //const {removeFromPokedex} = contexto
+  const {removeFromPokedex} = contexto
   
   // hook para saber nosso path atual
   const location = useLocation();
@@ -51,7 +51,7 @@ function Header() {
           <Button2 onClick={() => goToHomePage(navigate)} >
             Todos os pokémons
           </Button2>
-          <RemoveButton  >
+          <RemoveButton onClick={() => removeFromPokedex(detalhes)} >
             Excluir da Pokedex
           </RemoveButton>
           </>

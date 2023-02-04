@@ -7,7 +7,7 @@ import { ContextoGlobal } from "../../contexts/GlobalContext";
 
 function HomePage() {
   const contexto = useContext(ContextoGlobal)
-  const {addToPokedex, filteredPokelist  } = contexto;
+  const {PokelistFiltrada} = contexto;
 
   return (
     <>
@@ -15,13 +15,7 @@ function HomePage() {
         <Header />
         <H3>Todos os Pokémons</H3>
 
-          {filteredPokelist().map((pokemon) => (
-            <Card
-              key={pokemon.url}
-              pokemonUrl={pokemon.url}
-              addToPokedex={addToPokedex}          
-            />
-          ))}
+          {PokelistFiltrada}
       
     </Container>
     </>

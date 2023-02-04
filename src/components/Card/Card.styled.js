@@ -81,6 +81,10 @@ export const DetalheButton = styled.button`
     text-decoration-line: underline;
 
     color: #FFFFFF;
+
+    :hover{
+    color: green;
+  }
   `;
 
 export const RemoveButton = styled.button`
