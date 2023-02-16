@@ -1,6 +1,6 @@
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { goToHomePage, goToPokedexPage } from "../../routes/coordinator";
-import { Container, Button1, P1, Img, Button2, RemoveButton } from "./Header.styled";
+import { Container, Button1, P1, Img, Button2, RemoveButton, AddButton } from "./Header.styled";
 import img from "../../img/logoPokemon.png"
 import { useContext } from "react";
 import { ContextoGlobal } from "../../contexts/GlobalContext";
@@ -10,7 +10,7 @@ function Header({detalhes}) {
 
   const contexto = useContext(ContextoGlobal)
 
-  const {removeFromPokedex} = contexto
+  const {removeFromPokedex, addToPokedex} = contexto
   
   // hook para saber nosso path atual
   const location = useLocation();
@@ -51,9 +51,13 @@ function Header({detalhes}) {
           <Button2 onClick={() => goToHomePage(navigate)} >
             Todos os pokémons
           </Button2>
-          <RemoveButton onClick={() => removeFromPokedex(detalhes)} >
+          <RemoveButton onClick={() => removeFromPokedex(detalhes, navigate)} >
             Excluir da Pokedex
           </RemoveButton>
+
+          <AddButton onClick={() => addToPokedex(detalhes, navigate)} >
+            <p>Adicionar na Pokedex</p>
+          </AddButton>
           </>
         );
       // default:

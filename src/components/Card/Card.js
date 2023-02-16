@@ -6,11 +6,10 @@ import { Container, ImgPokemon, ImgPokebola, Num, Nome,
          CapturarButton, DetalheButton, RemoveButton, Types } from "./Card.styled";
 import PokeBola from '../../img/pokebola.png'
 import { getColors } from "../../utils/ReturnCardColor";
-import DetalhesPokemon from "../../pages/DetalhesPokemon/DetalhesPokemon";
-
 
 
 export default function Card(props) { 
+
   const { pokemonUrl, addToPokedex, removeFromPokedex, } = props;
 
   // hook para saber nosso path atual
@@ -21,7 +20,7 @@ export default function Card(props) {
 
   const [pokemon, setPokemon] = useState({});
   
-  console.log(pokemon)
+  //console.log(pokemon)
 
   useEffect(() => {
     fetchPokemon();

@@ -3,12 +3,19 @@ import { useEffect, useState } from "react";
 import { BASE_URL } from "../constants/url";
 import { ContextoGlobal } from "../contexts/GlobalContext";
 import Card from "../components/Card/Card"
+import swal from "sweetalert2";
+import img from '../img/pikachu.gif'
+import { goToPokedexPage } from "../routes/coordinator";
+
 
 
 export default function GlobalState(props){
+  
+
 
     const [pokelist, setPokelist] = useState([]);
     const [pokedex, setPokedex] = useState([]);
+
 
     useEffect(() => {
       fetchPokelist();
@@ -24,7 +31,21 @@ export default function GlobalState(props){
       }
     };
 
-    const addToPokedex = (pokemonToAdd) => {
+   const msgAdd = () => {
+    swal.fire({
+      title: 'Gotcha!',
+      text: 'O Pokémon foi adicionado a sua Pokédex',
+      width: '451px',
+      backdrop: `
+      rgba(93, 93, 93, 0.8)
+        url(${img})
+        left top
+        no-repeat
+      `
+    })
+   };
+
+    const addToPokedex = (pokemonToAdd, navigate) => {
       const isAlreadyOnPokedex = pokedex.find(
         (pokemonInPokedex) => pokemonInPokedex.name === pokemonToAdd.name
       );
@@ -33,14 +54,30 @@ export default function GlobalState(props){
         const newPokedex = [...pokedex, pokemonToAdd];
         setPokedex(newPokedex);
       }
+      msgAdd()
+      goToPokedexPage(navigate)
     };
 
-    const removeFromPokedex = (pokemonToRemove) => {
+
+    const msgExcluir = () => { 
+        swal.fire({
+        title: 'Oh, no!',
+        text: 'O Pokémon foi removido da sua Pokedex',
+        width: '451px',
+        backdrop: `
+        rgba(93, 93, 93, 0.8)`
+      })
+    };
+
+
+    const removeFromPokedex = (pokemonToRemove, navigate) => {
       const newPokedex = pokedex.filter(
         (pokemonInPokedex) => pokemonInPokedex.name !== pokemonToRemove.name
       );
 
       setPokedex(newPokedex);
+      msgExcluir()
+      goToPokedexPage(navigate)
       
     };
 
@@ -68,7 +105,6 @@ export default function GlobalState(props){
   
 
    //======================================================================================//
-
         
 
       const context = {
