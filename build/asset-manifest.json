@@ -1,0 +1,12 @@
+{
+  "files": {
+    "main.js": "/static/js/main.4db71cb1.js",
+    "static/media/pikachu.gif": "/static/media/pikachu.fb192bd973cb807560b2.gif",
+    "static/media/logoPokemon.png": "/static/media/logoPokemon.5c7c95f2d4fd0bcb6050.png",
+    "index.html": "/index.html",
+    "main.4db71cb1.js.map": "/static/js/main.4db71cb1.js.map"
+  },
+  "entrypoints": [
+    "static/js/main.4db71cb1.js"
+  ]
+}
